@@ -1,14 +1,15 @@
-let smth = function(url, mode = {mode: 'no-cors'}) {
-  const resp = fetch(url, mode);
-  resp.then(response => {
-    return new Promise((resolve, reject) => {
-      (response.status < 400) ? resolve(response) : reject('Failed');
-    });
+let getResponse = function(url, mode = {mode: 'no-cors'}) {
+  const fetchPromise = fetch(url);
+  fetchPromise.then(response => {
+    checkStatus(response).then(data => console.log(data)).catch(error => console.log(error));
   });
 };
-
-let callWrap = function(url) {
-  smth(url).then(data => console.log(data)).catch(error => console.log(error));
+function checkStatus (data) {
+  return new Promise((res, rej) => {
+    if (data.status < 400) res(data);
+    rej('Failed');
+  });
 }
-callWrap('https://dhunko.github.io/trainingTasks');
-callWrap('https://dhunko.github.io/trainingTasks222222');
+
+getResponse('https://dhunko.github.io/trainingTasks');
+getResponse('https://dhunko.github.io/trainingTasks222222');
