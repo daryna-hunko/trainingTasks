@@ -1,8 +1,14 @@
 let smth = function(url, mode = {mode: 'no-cors'}) {
   const resp = fetch(url, mode);
   resp.then(response => {
-      (response.status < 400) ? console.log(response): console.log('Failed')
+    return new Promise((resolve, reject) => {
+      (response.status < 400) ? resolve(response) : reject('Failed');
+    });
   });
 };
-smth('https://dhunko.github.io/trainingTasks');
-smth('https://dhunko.github.io/trainingTasks222222');
+
+let callWrap = function(url) {
+  smth(url).then(data => console.log(data)).catch(error => console.log(error));
+}
+callWrap('https://dhunko.github.io/trainingTasks');
+callWrap('https://dhunko.github.io/trainingTasks222222');
