@@ -1,11 +1,8 @@
-let smth = async function(url, mode = {mode: 'no-cors'}) {
-  const resp = await fetch(url, mode);
-  return new Promise((resolve, reject) => {
-      (resp.status < 400) ? resolve(resp/*.text()*/) : reject('Failed');
+let smth = function(url, mode = {mode: 'no-cors'}) {
+  const resp = fetch(url, mode);
+  resp.then(response => {
+      (response.status < 400) ? console.log(response): Promise.reject(console.log('Failed'))
   });
 };
-let callWrap = function(url) {
-  smth(url).then(data => console.log(data)).catch(error => console.log(error));
-}
-callWrap('https://dhunko.github.io/trainingTasks');
-callWrap('https://dhunko.github.io/trainingTasks222222');
+smth('https://dhunko.github.io/trainingTasks');
+smth('https://dhunko.github.io/trainingTasks222222');
