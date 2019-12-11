@@ -9,13 +9,3 @@ let callWrap = function(url) {
 }
 callWrap('https://learn.javascript.ru/fetch');
 callWrap('https://learn.javascript.ru/aaaa');
-/*let outputEl = document.querySelector('.output');
-
-document.querySelector('.submit-btn').addEventListener('click', function(e) {
-  let el = document.querySelector('.input').value;
-  outputEl.innerText = task(+el);
-});
-document.querySelector('.clear').addEventListener('click', function(e) {
-  outputEl.innerText = '';
-  document.querySelector('.input').value ='';
-});*/
