@@ -7,5 +7,5 @@ let smth = async function(url, mode = {mode: 'no-cors'}) {
 let callWrap = function(url) {
   smth(url).then(data => console.log(data)).catch(error => console.log(error));
 }
-callWrap('https://learn.javascript.ru/fetch');
-callWrap('https://learn.javascript.ru/aaaa');
+callWrap('https://dhunko.github.io/trainingTasks');
+callWrap('https://dhunko.github.io/trainingTasks222222');
