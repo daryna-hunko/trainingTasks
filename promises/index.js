@@ -1,14 +1,7 @@
-let getResponse = function(url, mode = {mode: 'no-cors'}) {
-  return fetch(url)  
-      .then((response) => {return response});
-};
-
 let getAnswer = function(url, mode) {
-  return getResponse(url, mode).then(data => {
-      return new Promise((res, rej) => {
-          if (data.status < 400) res(data);
-          rej('Failed');
-      });
+  return fetch(url, mode).then(data => {
+        if (data.status < 400) return Promise.resolve(data);
+        return Promise.reject('Failed');
   });
 };
 
