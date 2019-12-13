@@ -1,6 +1,6 @@
 let getAnswer = function(url, mode) {
   return fetch(url, mode).then(data => {
-        if (data.status < 400) return Promise.resolve(data);
+        if (data.status < 400) return data;
         return Promise.reject('Failed');
   });
 };
