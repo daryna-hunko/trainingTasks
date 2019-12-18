@@ -1,25 +1,26 @@
 let getA = function(id) {
-    return Promise.resolve('0001');
+    return Promise.resolve(2);
 };
 let getAFromAnotherServer = function(id) {
-    return Promise.resolve('0000');
+    return Promise.resolve(undefined);
 };
 
 let answerSomethingFinaly = function(){
     return Promise.all([getA(), getAFromAnotherServer()])
         .then(results => {
-            if ((results[0] == results[1]) && (results[0] !== undefined)) {
-                console.log(results[0]);
-                return results[0];
-            } else if ((results[0] !== undefined) && (results[1] === undefined)) {
-                console.log(results[0]);
-                return results[0];
-            } else if ((results[1] !== undefined) && (results[0] === undefined)) {
-                console.log(results[1]);
-                return results[1];
-            }
-            return Promise.reject('Faileddddd!')
+          if ((results[0] == results[1]) && (results[0] !== undefined)) {
+            return results[0];
+          }
+          if (results[0] !== results[1]) {
+            if (results[0] ===  undefined) {
+              return results[1];
+            } 
+            if (results[1] ===  undefined) {
+              return results[0];
+            } 
+          }
+          return Promise.reject('Vse ploxo');
         })
-        .catch(e => {return Promise.reject('Failedк!')})
+        .catch(e => {return Promise.reject('something went totally wrong')})
 };
-answerSomethingFinaly();
+console.log(answerSomethingFinaly());

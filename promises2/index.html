@@ -20,7 +20,18 @@
       <div class="wrap">
         <h1>Promises task</h1>
         <div class="task-decr">
-          will add the description
+          <div>There are 2 methods of getting data - getA(id) and getAFromAnotherServer(id) - both return promise that resolves in some data (for example, string)</div>
+          <div>Create the code that requests both variants of getting id</div>
+          <div>New function should:</div>
+          <ul style="margin-left: 30px;">
+            <li>if one of methods is failing - return data from the second one</li>
+            <li>if both methods are failing - return rejected promise</li>
+            <li>if both methods return data - compare results:</li>
+            <ul style="margin-left: 20px;">
+              <li>equal - return answer wrapped in Promise</li>
+              <li>different - reject</li>
+            </ul>
+          </ul>
         </div>
 
         <!--<div>
